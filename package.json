@@ -2,6 +2,28 @@
   "name": "@c3s4/create-tyepscript-starter",
   "version": "1.0.0",
   "description": "Create script to create an node typescript app",
-  "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "main": "dist/index.js",
+  "type": "commonjs",
+  "bin": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "@types/node": "^22.4.1",
+    "@typescript-eslint/eslint-plugin": "^8.2.0",
+    "@typescript-eslint/parser": "^8.2.0",
+    "eslint": "^9.9.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.2.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "dev": "ts-node src/index.ts"
+  }
 }
