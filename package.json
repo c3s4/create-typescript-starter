@@ -1,0 +1,7 @@
+{
+  "name": "@c3s4/create-tyepscript-starter",
+  "version": "1.0.0",
+  "description": "Create script to create an node typescript app",
+  "main": "index.js",
+  "license": "MIT"
+}
