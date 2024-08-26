@@ -3,13 +3,13 @@
     "declaration": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "NodeNext",
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "target": "ES2016",
-    "module": "NodeNext",
-    "outDir": "./dist"
+    "target": "ES2022",
+    "module": "ESNext",
+    "outDir": "./dist",
+    "moduleResolution": "Node"
   },
   "exclude": ["src/**/*.test.ts"]
 }
