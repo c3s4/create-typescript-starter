@@ -5,14 +5,10 @@ import { escape } from 'querystring';
 export const initGitRepository = async () => {
   console.log('Initializing git repository...');
   console.log();
-  try {
-    await execa({
-      stdout: ['pipe', 'inherit'],
-      stderr: ['pipe', 'inherit'],
-    })`git init --initial-branch=main`;
-  } catch (error) {
-    console.error(error);
-  }
+  await execa({
+    stdout: ['pipe', 'inherit'],
+    stderr: ['pipe', 'inherit'],
+  })`git init --initial-branch=main`;
 };
 
 export const addFilesToGit = async () => {
