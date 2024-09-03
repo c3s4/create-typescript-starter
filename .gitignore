@@ -128,3 +128,26 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# macOS 11.0 and later
+.VolumeIcon.icns
+
+# Directories potentially created on remote AFP shares
+.AppleDB
+.AppleDesktop
+
+# iCloud generated files
+*.icloud
+
