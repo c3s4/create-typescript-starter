@@ -1,8 +1,11 @@
 {
-  "name": "core-lib-poc",
-  "version": "0.0.1",
-  "license": "MIT",
+  "name": "%projectName%",
+  "version": "%projectVersion%",
+  "license": "%projectLicense%",
   "private": true,
+  "description": "%projectDescription%",
+  "author": "%projectAuthor%",
+  "repository": "%projectRepository%",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "type": "module",
@@ -15,13 +18,14 @@
     }
   },
   "scripts": {
-    "build": "rm -rf dist && %PKG_MNGR% build:types && %PKG_MNGR% build:cjs && %PKG_MNGR% build:esm",
+    "build": "rm -rf dist && %packageManager% build:types && %packageManager% build:cjs && %packageManager% build:esm",
     "prepare": "npx tsc -p tsconfig.types.json && npx tsc -p tsconfig.cjs.json && npx tsc -p tsconfig.esm.json",
+    "dev": "tsx src/index.ts",
     "type-check": "tsc --noEmit -p tsconfig.test.json",
     "lint": "eslint --fix",
-    "test": " %PKG_MNGR% type-check && vitest --typecheck",
-    "test:ui": "%PKG_MNGR% type-check && vitest --typecheck --ui",
-    "test:coverage": "%PKG_MNGR% type-check && vitest --typecheck --coverage --ui"
+    "test": " %packageManager% type-check && vitest --typecheck",
+    "test:ui": "%packageManager% type-check && vitest --typecheck --ui",
+    "test:coverage": "%packageManager% type-check && vitest --typecheck --coverage --ui"
   },
   "dependencies": {},
   "devDependencies": {
@@ -35,6 +39,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "prettier": "^3.3.3",
+    "tsx": "^4.18.0",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.0.1",
     "vitest": "^2.0.5"

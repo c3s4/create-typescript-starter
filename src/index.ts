@@ -24,14 +24,27 @@
 */
 
 import { Ask } from './ask';
-import { copyTemplateFiles } from './config-project';
+import { copyTemplateFiles, createProjectFolder } from './config-project';
+import { toValidPackageName } from './helpers';
+import validateProjectName from 'validate-npm-package-name';
 
 const start = async () => {
   const answers = await Ask();
 
-  copyTemplateFiles(answers);
+  answers.projectName = toValidPackageName(answers.projectName);
+  const projectNameValidation = validateProjectName(answers.projectName);
 
-  // configure project
+  if (projectNameValidation.errors) {
+    console.error(
+      'The project name is not npm compliant',
+      projectNameValidation.errors,
+      'https://github.com/npm/validate-npm-package-name#naming-rules',
+    );
+    process.exit(1);
+  }
+
+  createProjectFolder(answers.projectName);
+  await copyTemplateFiles(answers);
 
   // install dependencies
 
@@ -44,8 +57,6 @@ const start = async () => {
   // upgrade dependencies if requested
 
   // remember to commit changes
-
-  console.log(answers);
 };
 
 start();
