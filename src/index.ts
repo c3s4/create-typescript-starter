@@ -25,6 +25,7 @@
 
 import { Ask } from './ask';
 import { copyTemplateFiles, createProjectFolder } from './config-project';
+import { installDependencies } from './dependencies';
 import { toValidPackageName } from './helpers';
 import validateProjectName from 'validate-npm-package-name';
 
@@ -45,6 +46,11 @@ const start = async () => {
 
   createProjectFolder(answers.projectName);
   await copyTemplateFiles(answers);
+
+  const currentDirectory = process.cwd();
+  // go inside project folder
+  process.chdir(answers.projectName);
+  await installDependencies(answers.packageManager);
 
   // install dependencies
 

@@ -19,7 +19,6 @@
   },
   "scripts": {
     "build": "rm -rf dist && %packageManager% build:types && %packageManager% build:cjs && %packageManager% build:esm",
-    "prepare": "npx tsc -p tsconfig.types.json && npx tsc -p tsconfig.cjs.json && npx tsc -p tsconfig.esm.json",
     "dev": "tsx src/index.ts",
     "type-check": "tsc --noEmit -p tsconfig.test.json",
     "lint": "eslint --fix",
