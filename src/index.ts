@@ -26,6 +26,7 @@
 import { Ask } from './ask';
 import { copyTemplateFiles, createProjectFolder } from './config-project';
 import { installDependencies } from './dependencies';
+import { addFilesToGit, commitInitialFiles, initGitRepository } from './git';
 import { toValidPackageName } from './helpers';
 import validateProjectName from 'validate-npm-package-name';
 
@@ -50,13 +51,18 @@ const start = async () => {
   const currentDirectory = process.cwd();
   // go inside project folder
   process.chdir(answers.projectName);
-  await installDependencies(answers.packageManager);
 
   // install dependencies
+  await installDependencies(answers.packageManager);
 
   // init git repository
+  await initGitRepository();
+
+  // add files to git
+  await addFilesToGit();
 
   // commit initial files
+  await commitInitialFiles();
 
   // ask for upgrade dependencies
 
