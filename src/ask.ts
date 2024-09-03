@@ -13,11 +13,11 @@ export interface Answers {
 const Ask = async (): Promise<Answers> => {
   const answers: Answers = {
     projectName: await input({ message: 'What is the project name?', required: true }),
-    projectDescription: await input({ message: 'What is your project description (optional)?' }),
-    projectAuthor: await input({ message: 'What is your project author (optional)?' }),
+    projectDescription: await input({ message: 'What is your project description (optional)?', default: '' }),
+    projectAuthor: await input({ message: 'What is your project author (optional)?', default: '' }),
     projectVersion: await input({ message: 'What is your project version (optional)?', default: '1.0.0' }),
     projectLicense: await input({ message: 'What is your project license (optional)?', default: 'MIT' }),
-    projectRepository: await input({ message: 'What is your project repository (optional)?' }),
+    projectRepository: await input({ message: 'What is your project repository (optional)?', default: '' }),
     packageManager: await select({
       message: 'What package manager do you want to use (npm or yarn)?',
       choices: [
