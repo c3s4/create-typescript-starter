@@ -7,7 +7,7 @@
     "sourceMap": true,
     "strict": true,
     "target": "ES2022",
-    "module": "ESNext",
+    "module": "CommonJS",
     "outDir": "./dist",
     "moduleResolution": "Node"
   },

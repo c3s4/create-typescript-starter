@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /*
 
 - Steps to be executed
@@ -22,7 +24,28 @@
 */
 
 import { Ask } from './ask';
+import { copyTemplateFiles } from './config-project';
 
-const answers = await Ask();
+const start = async () => {
+  const answers = await Ask();
 
-console.log(answers);
+  copyTemplateFiles(answers);
+
+  // configure project
+
+  // install dependencies
+
+  // init git repository
+
+  // commit initial files
+
+  // ask for upgrade dependencies
+
+  // upgrade dependencies if requested
+
+  // remember to commit changes
+
+  console.log(answers);
+};
+
+start();
