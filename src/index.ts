@@ -25,7 +25,7 @@
 
 import { Ask } from './ask';
 import { copyTemplateFiles, createProjectFolder } from './config-project';
-import { installDependencies } from './dependencies';
+import { installDependencies, upgradeDependencies } from './dependencies';
 import { addFilesToGit, commitInitialFiles, initGitRepository } from './git';
 import { toValidPackageName } from './helpers';
 import validateProjectName from 'validate-npm-package-name';
@@ -64,11 +64,8 @@ const start = async () => {
   // commit initial files
   await commitInitialFiles();
 
-  // ask for upgrade dependencies
-
   // upgrade dependencies if requested
-
-  // remember to commit changes
+  await upgradeDependencies(answers.packageManager);
 };
 
 start();
