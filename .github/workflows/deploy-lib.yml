@@ -1,0 +1,27 @@
+#  TODO steps
+# - create a NPM_TOKEN secret in github with my token
+# - prepare the deploy-lib.yml file
+# - remember: to trigger the deploy, I need to push a tag with the version number and create a release manually or via the github API (https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository?tool=webui)
+# - because the package has a scope, but is public, I need to add the --access public flag to the npm publish command (npm publish --access public)
+
+name: Publish Package to npmjs
+on:
+  release:
+    types: [published]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org/'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

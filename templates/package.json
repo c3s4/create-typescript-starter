@@ -1,0 +1,46 @@
+{
+  "name": "%projectName%",
+  "version": "%projectVersion%",
+  "license": "%projectLicense%",
+  "private": true,
+  "description": "%projectDescription%",
+  "author": "%projectAuthor%",
+  "repository": "%projectRepository%",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "type": "module",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "rm -rf dist && %packageManager% build:types && %packageManager% build:cjs && %packageManager% build:esm",
+    "dev": "tsx src/index.ts",
+    "type-check": "tsc --noEmit -p tsconfig.test.json",
+    "lint": "eslint --fix",
+    "test": " %packageManager% type-check && vitest --typecheck",
+    "test:ui": "%packageManager% type-check && vitest --typecheck --ui",
+    "test:coverage": "%packageManager% type-check && vitest --typecheck --coverage --ui"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@eslint/js": "^9.8.0",
+    "@types/node": "^22.1.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.1",
+    "@typescript-eslint/parser": "^8.0.1",
+    "@vitest/coverage-v8": "^2.0.5",
+    "@vitest/ui": "^2.0.5",
+    "eslint": "9.x",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.3.3",
+    "tsx": "^4.18.0",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.0.1",
+    "vitest": "^2.0.5"
+  }
+}
