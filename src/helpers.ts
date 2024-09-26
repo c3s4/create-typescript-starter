@@ -28,3 +28,26 @@ export const getDataFromJSON = (filePath: string) => {
 export const writeJSONtoFile = (filePath: string, data: any) => {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 };
+
+const copyItem = async (source: string, file: string, destination: string, vars: Answers) => {
+  const currentPath = `${source}/${file}`;
+  const stats = await fs.promises.stat(currentPath);
+  if (stats.isDirectory()) {
+    await fs.promises.mkdir(`${destination}/${file}`);
+    await recursiveCopyAndReplace(currentPath, `${destination}/${file}`, vars);
+  } else {
+    const fileContent = await fs.promises.readFile(currentPath, {
+      encoding: 'utf-8',
+    });
+
+    const replacedContent = replacePlaceholders(fileContent, vars);
+    await fs.promises.writeFile(`${destination}/${file}`, replacedContent);
+  }
+};
+
+export const recursiveCopyAndReplace = async (source: string, destination: string, vars: Answers) => {
+  const files = await fs.promises.readdir(source);
+  const copyPromises = files.map((file) => copyItem(source, file, destination, vars));
+
+  return Promise.all(copyPromises);
+};
