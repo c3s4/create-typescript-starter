@@ -16,6 +16,8 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v4
+      # install pnpm
+      - uses: pnpm/action-setup@v2
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v4
         with:
