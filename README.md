@@ -3,6 +3,26 @@
 This is an opinionated starter project for creating a TypeScript project.
 It works as other _crete-\*_ projects, but it is focused on TypeScript.
 
+## How to use
+
+To create a project based on this starter, you can run one of the following commands:
+
+```bash
+pnpm create @c3s4/typescript-starter
+```
+
+or
+
+```bash
+yarn create @c3s4/typescript-starter
+```
+
+or
+
+```bash
+npm create @c3s4/typescript-starter
+```
+
 ## Choices I made
 
 - Use `tsx` as Typescript executor, instead of `ts-node`, because it is more
